@@ -34,5 +34,30 @@ price_label.grid(row=1, column=2, sticky=W)
 price_entry = Entry(app, textvariable=price_text)
 price_entry.grid(row=1, column=3)
 
+# Parts List
+parts_list = Listbox(app, height=8, width=50, border=1)
+parts_list.grid(row=3, column=0, rowspan=6, columnspan=3, pady=20, padx=20)
+
+# Create Scrollbar
+scrollbar = Scrollbar(app, border=1)
+scrollbar.grid(row=3, column=3)
+
+# Set scrollbar to listbox
+parts_list.configure(yscrollcommand=scrollbar.set)
+scrollbar.configure(command=parts_list.yview)
+
+# Buttons
+add_btn = Button(app, text='Add Part', width=12, command=add_item)
+add_btn.grid(row=2, column=0, pady=20)
+
+remove_btn = Button(app, text='Remove Part', width=12, command=remove_item)
+remove_btn.grid(row=2, column=1, pady=20)
+
+update_btn = Button(app, text='Update Part', width=12, command=update_item)
+update_btn.grid(row=2, column=2, pady=20)
+
+clear_btn = Button(app, text='Clear Part', width=12, command=clear_item)
+clear_btn.grid(row=2, column=3, pady=20)
+
 # Start program
 app.mainloop()
